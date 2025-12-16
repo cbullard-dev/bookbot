@@ -1,4 +1,5 @@
 from stats import count_words, count_characters, sort_counts
+from sys import argv, exit
 
 TITLE = "============ BOOKBOT ============"
 WORD_COUNT_HEADER = "----------- Word Count ----------"
@@ -12,7 +13,11 @@ def get_book_text(filepath):
   return file_contents
 
 def main():
-  path = "books/frankenstein.txt"
+  if len(argv) <2:
+    print("Usage: python3 main.py <path_to_book>")
+    exit(1)
+
+  path = argv[1]
 
   # Complete the collections and calculations
   book = get_book_text(path)
